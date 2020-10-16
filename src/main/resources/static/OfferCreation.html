@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Offer Creation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/OfferCreation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    
+</head>
+<body>
+
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="showOffers.html"><img class="stnd default-logo dark-version" src="./images/logo.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="showOffers.html">ShowOffers <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="OfferCreation.html">Offer Creation <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>   
+   
+   <div id="mainNavbar">
+      <label id="mainNavbarContent">Offer Creation</label>
+  </div>
+  
+    <br><br>
+   
+   <div id="form">
+       <form>
+      
+    <table id="table1" style="font-weight: bold">
+      
+      <tr>
+          <td>Offer Type</td> <td><input type="radio" id="bundled" group="offerType" name="offerType" value="bundled">
+          <label for="bundled">Bundled</label>
+          <input type="radio" id="individual" group="offerType" name="offerType" value="individual">   
+          <label for="individual">Individual</label></td>
+      </tr>
+      
+      <tr>
+          <td>Offer Id</td> <td><input type="text" id="offerId" name="offerId" required></td>
+          <td>Offer Description</td> <td><input type="text" id="offerDescription" name="offerDescription"></td>
+      </tr>
+      
+      <tr>
+          <td>Offer Start Date</td> <td><input type="date" id="offerStartDate" name="offerStartDate"></td>
+          <td>Offer Expiry Date</td> <td><input type="date" id="offerExpiryDate" name="offerExpiryDate"></td>
+      </tr>
+      
+      <tr>
+          <td>
+            <label>Cost of Offer</label></td>
+            <td><input type="text" id="cost" name="cost"><br><br>
+          </td>
+          <td><label>Life Cycle Id</label></td> <td><select name="lifeCycleId" id="lifeCycleId">
+                                                    <option value="">None</option>
+                                                    <option value="CUT1 (20 Min)">CUT1 (20 Min)</option>
+                                                    <option value="CUT2 (30 Weekly)">CUT2 (30 Weekly)</option>
+                                                    <option value="CUT3 (30 Min)">CUT3 (30 Min)</option>
+                                                    <option value="DEF _LS (20 Days)">DEF _LS (20 Days)</option></select></td>
+      </tr>
+      
+      <tr>
+          <td>Validity Type</td> <td><input type="text" id="validityType" name="validityType"></td>
+          <td>Validity</td> <td><input type="text" id="validity" name="validity"></td>
+      </tr>
+      
+      <tr>
+          <td><label>Price Point ID</label></td> <td><select name="pricePoint" id="pricePoint">
+                                                    <option value="">None</option>
+                                                    <option value="FULL_TEST( INR 100 )">FULL_TEST( INR 100 )</option>
+                                                    <option value="OP( INR 100 )">OP( INR 100 )</option>
+                                                    <option value="T12( INR 20 )">T12( INR 20 )</option></select></td>
+         <td>Price</td> <td><input type="text" id="price" name="price"></td>                                           
+      </tr>
+      
+      <tr>
+          <td>Auto Renewal Offer</td> <td><input type="radio" id="yesAuto" group="yesAuto"  name="yesAuto" value="yesAuto">
+          <label for="yes">Yes</label>
+          <input type="radio" id="noAuto" group="yesAuto" name="yesAuto" value="noAuto">   
+          <label for="no">No</label></td>
+
+           <td>Send Notifications</td> <td><input type="radio" id="sendNotificationsYes" group="sendNotification"  name="sendNotification" value="sendNotificationsYes">
+          <label for="yes">Yes</label>
+          <input type="radio" id="sendNotificationsNo" group="sendNotification"  name="sendNotification" value="sendNotificationsNo">   
+          <label for="no">No</label></td>
+      </tr>
+      
+      <tr>
+          <td>Renew Offer As</td> <td><input type="radio" id="bundledRenew" group="bundledRenew" name="bundledRenew" value="bundledRenew">
+          <label for="bundledRenew">Bundled</label>
+          <input type="radio" id="individualRenew" group="bundledRenew" name="bundledRenew" value="individualRenew">   
+          <label for="Individual">Individual</label></td>
+          
+          <td><label>Next Renewal Offer</label></td> <td><select name="nextRenewalOffer" id="nextRenewalOffer">
+                                                    <option value="None">None</option>
+          </td>
+      </tr>
+      <tr>
+        <!-- <input type="submit" name="submit" id="submitOffer" value="Submit"> -->
+            
+      
+      </tr>
+    </table>
+    <img type ="submit" src="images/Update.PNG" id="submitOffer" style="margin-left: 5px">
+</form><br><br>
+
+   </div>
+ 
+<!--     </table>
+       <button id="submitOffer"> submit </button>
+   </form><br><br>
+    -->
+   <div id="mainNavbar2">
+      <label id="mainNavbarContent">Plan - Offer Linking</label>
+  </div><br>
+   
+<!--
+   <div id="redBackground">
+       <label style="color: white">Show</label> <select name="nextRenewalOffer" id="nextRenewalOffer">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option></select> <label style="color: white">Entries</label><br>
+    </div>
+-->
+                
+<!--
+   <table id="table2">
+       <tr>
+           <td id="addId" name="add"><img src="Add.PNG"></td>
+           <td id="serviceId" name="serviceId">Service Id</td>
+           <td id="serviceType" name="serviceType">Service Type</td>
+           <td id="offerPlanId" name="offerPlanId">Offer Id</td>
+           <td id="planId" name="planId">Plan Id</td>
+           <td id="order" name="order">Order</td>
+           <td id="save" name="save"><img src="Save.PNG"></td>
+       </tr>
+   </table><br>
+-->
+<div id="form2">
+  
+  <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th id="addrow" class="th-sm pointer"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+
+                    </th>
+                    
+                    <th class="th-sm">Offer ID
+
+                    </th>
+                    <th class="th-sm">Plan ID
+
+                    </th>
+                    <th class="th-sm">Order
+
+                    </th>
+
+                    <th class="th-sm"> <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
+
+                    </th>
+                </tr>
+            </thead>
+
+<!--
+            <tbody>
+                <tr>
+                    <td onclick="hey()" class="pointer"><i class="fa fa-trash " aria-hidden="true"></i>
+                    </td>
+                    <td>61</td>
+                    <td>A</td>
+                    <td>$320,800</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="pointer"><i class="fa fa-trash " aria-hidden="true"></i></td>
+                    <td>63</td>
+                    <td>B</td>
+                    <td>$170,750</td>
+                    <td></td>
+                </tr>s
+            </tbody>
+-->
+
+        </table>
+   </div>
+<!--
+   <div id="redBackground">
+       <label style="color: white">Showing <label id="label1" name="label1">0</label> to <label id="label2" name="label2">0</label> of <label id="label3" name="label3">0</label> entries.</label></div><br>
+-->
+       
+        <script type="module" src="js/OfferCreation.js"></script> 
+              
+</body>
+</html>

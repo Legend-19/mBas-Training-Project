@@ -1,0 +1,57 @@
+body{
+    padding: 10px;
+}
+
+#mainNavbarContent{
+    color: #ce102c;
+    margin:10px
+}
+
+#mainNavbar{
+    background-color: darkgray;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+#mainNavbar2{
+    background-color: darkgray;
+}
+
+.navbar{
+    padding: 5px;
+}
+
+.nav-link:hover{
+font-weight: bold;
+}
+
+#table1{
+    margin: auto;
+    
+}
+
+#table2{
+    margin: auto;
+}
+
+td
+{
+    padding:10px 40px;
+}
+
+#redBackground{
+    background-color:#ce102c;
+    padding:5px;
+}
+
+#dtBasicExample{
+    text-align: center;
+}
+
+button {
+    border: none;
+    background: none;
+    padding: 0;
+}
