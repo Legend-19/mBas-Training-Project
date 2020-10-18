@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Offer Creation</title>
+    <title>Update Offer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/OfferCreation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,21 +11,44 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    
+    <script type="module" src="js/phome.js"></script>
+    <script type="module" src="js/UpdateOffer.js"></script> 
 </head>
 <body>
-   
-  <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" href="#" id="noti">noti</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#" id="paste">paste</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#" id="admin">admin</a>
-  </li>
-</ul>
+ 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="showOffers.html"><img src="images/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li id="offerMgmt" class="nav-item active">
+              <a  id="links" class="nav-link">OFFER MANAGEMENT</a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <a href="http://localhost:8080/"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGOUT</button></a>
+          </div>
+        </div>
+      </nav>   
+      <nav id="nav2" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="showOffers.html"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" id="showoffers">
+              <a  id="links" style="margin-right: 79px;" class="nav-link" href="showOffers.html">SHOW OFFERS<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active" id="offercreation">
+              <a id="links" class="nav-link" href="OfferCreation.html">ADD OFFER<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
    
    <div id="mainNavbar">
       <label id="mainNavbarContent">Offer Creation</label>
@@ -43,10 +66,11 @@
           <label for="bundled">Bundled</label>
           <input type="radio" id="individual" group="offerType" name="offerType" value="individual">   
           <label for="individual">Individual</label></td>
+          <td></td> <td></td>
       </tr>
       
       <tr>
-          <td>Offer Id</td> <td><input type="text" id="offerId" name="offerId" required></td>
+          <td>Offer Id</td> <td><input onkeypress="return onlyNumberKey(event)"  type="text" id="offerId" name="offerId" required></td>
           <td>Offer Description</td> <td><input type="text" id="offerDescription" name="offerDescription"></td>
       </tr>
       
@@ -58,7 +82,7 @@
       <tr>
           <td>
             <label>Cost of Offer</label></td>
-            <td><input type="text" id="cost" name="cost"><br><br>
+            <td><input onkeypress="return onlyNumberKey(event)" type="text" id="cost" name="cost"><br><br>
           </td>
           <td><label>Life Cycle Id</label></td> <td><select name="lifeCycleId" id="lifeCycleId">
                                                     <option value="">None</option>
@@ -205,8 +229,7 @@
    <div id="redBackground">
        <label style="color: white">Showing <label id="label1" name="label1">0</label> to <label id="label2" name="label2">0</label> of <label id="label3" name="label3">0</label> entries.</label></div><br>
 -->
-       
-        <script type="module" src="js/UpdateOffer.js"></script> 
+<script type="module" src="js/validations.js"></script>
               
 </body>
 </html>

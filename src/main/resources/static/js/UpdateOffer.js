@@ -1,5 +1,7 @@
 import {addOffer, deleteOffer, getOffers, offerPriceById, updateOffer, getOfferById} from "./api.js" 
 
+
+
 var offerId = getCookieValue("offerId");
 console.log(offerId);
 
@@ -7,6 +9,9 @@ function getCookieValue(a) {
     var b = document.cookie.match('(^|;)\\s*' + a + '\\s*=\\s*([^;]+)');
     return b ? b.pop() : '';
 }
+
+
+if (getCookieValue("msession") == "true") {
 
 $(document).ready(function(){
 
@@ -186,17 +191,7 @@ $("#submitOffer").click(function(e){
 
 
 
-});
-
-          // "offerId": "7",
-          // "offerDesc": "idea",
-          // "offerPlan": "500",
-          // "offerType": "postpaid",
-          // "renewalBundleType": "aa",
-          // "startDate": "2020-02-01",
-          // "endDate": "2020-02-02",
-          // "lifeCycleId": "bb",
-          // "pricePoint": "50",
-          // "autoRenewal": "aa",
-          // "nextRenewalOffer": "bb",
-          // "sendNotification": "no"
+}); }
+else {
+    window.location.href = "http://localhost:8080/";
+}

@@ -2,13 +2,10 @@
 <html lang="en">
 
 <head>
-    <META Http-Equiv="Cache-Control" Content="no-cache"/> 
-<META Http-Equiv="Pragma" Content="no-cache"/> 
-<META Http-Equiv="Expires" Content="0"/>
-
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mBAS Offers</title>
+    <title>Offers</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,36 +13,53 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-
+    <script type="module" src="js/showOffers.js"></script>
+    <script type="module" src="js/phome.js"></script>
     <link rel="stylesheet" href="./css/showOffers.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="showOffers.html"><img class="stnd default-logo dark-version" src="./images/logo.png"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="showOffers.html">ShowOffers <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="OfferCreation.html">Offer Creation <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
-    </nav>       
+        <a class="navbar-brand" href="showOffers.html"><img src="images/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li id="offerMgmt" class="nav-item active">
+              <a  id="links" class="nav-link">OFFER MANAGEMENT</a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <a href="http://localhost:8080/"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGOUT</button></a>
+          </div>
+        </div>
+      </nav>   
+      <nav id="nav2" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="showOffers.html"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" id="showoffers">
+              <a  id="links" style="margin-right: 79px;" class="nav-link" href="showOffers.html">SHOW OFFERS<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active" id="offercreation">
+              <a id="links" class="nav-link" href="OfferCreation.html">ADD OFFER<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
        
         <div class="row">
             <div class="col-md-11">
                 <div class="container">
                 <h1>Offers</h1>
                 <br>
-                <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                    <thead>
+                <table border="5" id="dtBasicExample" class="table thead-dark table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                    <thead >
                         <tr>
                             <th class="th-sm"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
 
@@ -72,51 +86,6 @@
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <!-- <tr>
-                            <td onclick="hey()" class="pointer"><i class="fa fa-trash " aria-hidden="true"></i>
-                            </td>
-                            <td class="pointer"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                            <td></td>
-                            <td>61</td>
-                            <td>A</td>
-                            <td>$320,800</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="pointer"><i class="fa fa-trash " aria-hidden="true"></i></td>
-                            <td class="pointer"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                            <td></td>
-                            <td>63</td>
-                            <td>B</td>
-                            <td>$170,750</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="pointer"><i class="fa fa-trash " aria-hidden="true"></i></td>
-                            <td class="pointer"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                            <td></td>
-                            <td>66</td>
-                            <td>C</td>
-                            <td>$86,000</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td class="pointer"><i class="fa fa-trash " aria-hidden="true"></i></td>
-                            <td class="pointer"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                            <td></td>
-                            <td>22</td>
-                            <td>C</td>
-                            <td>$433,060</td>
-                            <td></td>
-                        </tr>
-                        <td class="pointer"><i class="fa fa-trash " aria-hidden="true"></i></td>
-                        <td class="pointer"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-                        <td></td>
-                        <td>27</td>
-                        <td>C</td>
-                        <td>$112,000</td>
-                        <td></td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -129,7 +98,6 @@
         </div>
     </div>
 
-<script type="module" src="js/showOffers.js"></script>
 </body>
 
 </html>

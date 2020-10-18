@@ -2,10 +2,6 @@ body {
     padding: 0px 10px;
 }
 
-.navbar{
-    padding: 5px;
-}
-
 .nav-link:hover{
 font-weight: bold;
 }
@@ -106,3 +102,31 @@ td {
     cursor: pointer;
 }
 
+#links:hover {
+  color: #ED9928;
+  
+}
+
+#navbarSupportedContent1 {
+  border-top: 2px solid #ED9928;
+}
+
+#links:hover {
+  color: #ED9928;
+  
+}
+
+#navbarSupportedContent1 {
+  border-top: 2px solid #ED9928;
+}
+
+.nav-link {
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+}
+
+button {
+  background: none;
+  border: none;
+}

@@ -1,9 +1,36 @@
 import { addOffer, deleteOffer, getOffers, offerPriceById, getPlans, addPlan } from "./api.js";
+
+import {inputValidations} from "./validations.js"
 var myTable;
 var rowCounter = 0;
- 
+
+function getCookieValue(a) {
+  var b = document.cookie.match("(^|;)\\s*" + a + "\\s*=\\s*([^;]+)");
+  return b ? b.pop() : "";
+}
+
+
+if (getCookieValue("msession") == "true") { 
 $(document).ready(function () {
   BindItemTable();
+
+  var tomorrow = new Date();
+tomorrow.setDate(new Date().getDate()+1);
+  var today = tomorrow.toISOString().split('T')[0];
+  console.log(today);
+document.getElementsByName("offerStartDate")[0].setAttribute('min', today);
+
+// $('#offerStartDate').datetimepicker();
+
+$('#offerExpiryDate').click(function () {
+  var date = document.getElementById("offerStartDate").value;
+  var startDate = new Date(date);
+   console.log(startDate);
+  startDate.setDate(startDate.getDate()+1);
+    var today = startDate.toISOString().split('T')[0];
+    console.log(today);
+  document.getElementsByName("offerExpiryDate")[0].setAttribute('min', today);
+})
 
   $("#addrow").click(function (e) {
     console.log("clickk");
@@ -58,6 +85,8 @@ $(document).ready(function () {
     document.getElementById("price").disabled = true;
     document.getElementById("nextRenewalOffer").disabled = true;
   });
+
+
   $("#lifeCycleId").click(function (e) {
     var option = document.getElementById("lifeCycleId").value;
     var vt = document.getElementById("validityType");
@@ -106,6 +135,12 @@ $(document).ready(function () {
 
   $("#submitOffer").click(function (e) {
     e.preventDefault();
+    var msg = inputValidations();
+    if( msg != null) {
+      alert(msg)
+    }
+
+    else {
     var offerType, autoRenewal, nextRenewalOfferType, nextRenewalOffer;
     var offerId = document.getElementById("offerId").value;
     var offerDesc = document.getElementById("offerDescription").value;
@@ -159,6 +194,7 @@ $(document).ready(function () {
 
     //console.log(jsonObj);
     addOffer(jsonObj);
+  }
   });
 
   getOffers()
@@ -258,8 +294,13 @@ window.savePlan = () => {
 }
 
 window.deleteRow = (btn) => {
-  console.log("DELETE");
-  var row = btn.parentNode.parentNode;
-  row.parentNode.removeChild(row);
-  rowCounter--;
+  // console.log("DELETE");
+  // var row = btn.parentNode.parentNode;
+  // row.parentNode.removeChild(row);
+  // rowCounter--;
+  alert("DELETED")
+} 
+}
+else {
+  window.location.href = "http://localhost:8080/";
 }

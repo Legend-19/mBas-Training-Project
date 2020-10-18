@@ -1,57 +1,112 @@
-body{
-    padding: 10px;
+body {
+  padding: 10px;
 }
 
-#mainNavbarContent{
-    color: #ce102c;
-    margin:10px
+#mainNavbarContent {
+  color: #ce102c;
+  margin: 10px;
 }
 
-#mainNavbar{
-    background-color: darkgray;
+#mainNavbar {
+  background-color: darkgray;
 }
+/*#offerMgmt{
+    margin-left: 1000px;
+*/
 
+/*#navbarSupportedContentOffer{
+    margin-top: 100px;
+}*/
 .pointer {
+  cursor: pointer;
+}
+
+#mainNavbar2 {
+  background-color: darkgray;
+}
+
+.navbar {
+  padding: 5px;
+}
+th,
+td {
+  border-bottom: 1px solid #ddd;
+}
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+.nav-link {
+    font-weight: bold;
+    font-size: larger;
     cursor: pointer;
 }
 
-#mainNavbar2{
-    background-color: darkgray;
+#table1 {
+  margin: auto;
 }
 
-.navbar{
-    padding: 5px;
+#table2 {
+  margin: auto;
 }
 
-.nav-link:hover{
-font-weight: bold;
+td {
+  padding: 10px 40px;
 }
 
-#table1{
-    margin: auto;
+#redBackground {
+  background-color: #ce102c;
+  padding: 5px;
+}
+
+#dtBasicExample {
+  text-align: center;
+}
+
+/*input:hover{*/
+/*border: 3px solid black;*/
+/*border-bottom: 3px solid #eb2227;*/
+
+/*font-size: 22px;*/
+/*}*/
+#lifeCycleId,
+#pricePoint,
+#nextRenewalOffer {
+  height: 30px;
+  width: 250px;
+}
+input {
+  height: 30px;
+  width: 250px;
+}
+#bundled,
+#individual,
+#yesAuto,
+#noAuto,
+#sendNotificationsYes,
+#sendNotificationsNo,
+#bundledRenew,
+#individualRenew {
+  height: 15px;
+  width: 30px;
+}
+/*input:focus{*/
+/*border-bottom: 5px solid #eb2227;*/
+/*font-size: 25px; */
+/*border-color: green;*/
+/*}*/
+
+#links:hover {
+    color: #ED9928;
     
-}
+  }
 
-#table2{
-    margin: auto;
-}
-
-td
-{
-    padding:10px 40px;
-}
-
-#redBackground{
-    background-color:#ce102c;
-    padding:5px;
-}
-
-#dtBasicExample{
-    text-align: center;
+#navbarSupportedContent1 {
+    border-top: 2px solid #ED9928;
 }
 
 button {
     border: none;
     background: none;
-    padding: 0;
 }

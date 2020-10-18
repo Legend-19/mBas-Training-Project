@@ -82,20 +82,3 @@ window.editRow = (item) => {
   document.cookie = "offerId=" + item.value;
   window.location.href = "UpdateOffer.html";
 };
-
-// function show(data) {
-// 	$('#tableBody').empty();
-//     data.forEach(row => {
-//         $('#tableBody').append(`   <tr>
-// 					                    <td onclick="hey()" class="pointer"><i class="fa fa-trash " aria-hidden="true"></i>
-// 					                    </td>
-// 					                    <td class="pointer"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></td>
-// 					                    <td>${row.offerPlan}</td>
-// 					                    <td>${row.offerId}</td>
-// 					                    <td>${row.offerDesc}</td>
-// 					                    <td>${row.offerType}</td>
-// 					                    <td></td>
-//                							</tr>`);
-//     })
-
-//   }

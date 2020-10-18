@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Offer Creation</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
     <link rel="stylesheet" href="css/OfferCreation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -11,28 +11,48 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    
+
+    <script type="module" src="js/phome.js"></script>
+    <script type="module" src="js/OfferCreation.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
+type="text/javascript"></script>
 </head>
 <body>
 
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="showOffers.html"><img class="stnd default-logo dark-version" src="./images/logo.png"></a>
+      <a class="navbar-brand" href="showOffers.html"><img src="images/logo.png"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="showOffers.html">ShowOffers <span class="sr-only">(current)</span></a>
+          <li id="offerMgmt" class="nav-item active">
+            <a  id="links" class="nav-link">OFFER MANAGEMENT</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="OfferCreation.html">Offer Creation <span class="sr-only">(current)</span></a>
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+          <a href="http://localhost:8080/"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">LOGOUT</button></a>
+        </div>
+      </div>
+    </nav>   
+    <nav id="nav2" class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="showOffers.html"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active" id="showoffers">
+            <a  id="links" style="margin-right: 79px;" class="nav-link" href="showOffers.html">SHOW OFFERS<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active" id="offercreation">
+            <a id="links" class="nav-link" href="OfferCreation.html">ADD OFFER<span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
-    </nav>   
-   
+    </nav>
+ 
    <div id="mainNavbar">
       <label id="mainNavbarContent">Offer Creation</label>
   </div>
@@ -45,28 +65,30 @@
     <table id="table1" style="font-weight: bold">
       
       <tr>
-          <td>Offer Type</td> <td><input type="radio" id="bundled" group="offerType" name="offerType" value="bundled">
+          <td>Offer Type</td> <td><input type="radio" class="input1" id="bundled" group="offerType" name="offerType" value="bundled" checked = "checked">
           <label for="bundled">Bundled</label>
-          <input type="radio" id="individual" group="offerType" name="offerType" value="individual">   
+          <input type="radio" id="individual" class="input1" group="offerType" name="offerType" value="individual">   
           <label for="individual">Individual</label></td>
+          <td></td>
+          <td></td>
       </tr>
       
       <tr>
-          <td>Offer Id</td> <td><input type="text" id="offerId" name="offerId" required></td>
-          <td>Offer Description</td> <td><input type="text" id="offerDescription" name="offerDescription"></td>
+          <td>Offer Id</td> <td><input onkeypress="return onlyNumberKey(event)" type="text" id="offerId" name="offerId" class="input2 form-control" required></td>
+          <td>Offer Description</td> <td><input type="text" id="offerDescription" class="input2 form-control" name="offerDescription"></td>
       </tr>
       
       <tr>
-          <td>Offer Start Date</td> <td><input type="date" id="offerStartDate" name="offerStartDate"></td>
-          <td>Offer Expiry Date</td> <td><input type="date" id="offerExpiryDate" name="offerExpiryDate"></td>
+          <td>Offer Start Date</td> <td><input type="date" id="offerStartDate" class="input2 form-control" name="offerStartDate"></td>
+          <td>Offer Expiry Date</td> <td><input type="date" id="offerExpiryDate" class="input2 form-control" name="offerExpiryDate"></td>
       </tr>
       
       <tr>
           <td>
             <label>Cost of Offer</label></td>
-            <td><input type="text" id="cost" name="cost"><br><br>
+            <td><input onkeypress="return onlyNumberKey(event)" type="text" id="cost" class="input2 form-control" name="cost">
           </td>
-          <td><label>Life Cycle Id</label></td> <td><select name="lifeCycleId" id="lifeCycleId">
+          <td><label>Life Cycle Id</label></td> <td><select name="lifeCycleId" class="input2" id="lifeCycleId">
                                                     <option value="">None</option>
                                                     <option value="CUT1 (20 Min)">CUT1 (20 Min)</option>
                                                     <option value="CUT2 (30 Weekly)">CUT2 (30 Weekly)</option>
@@ -75,38 +97,38 @@
       </tr>
       
       <tr>
-          <td>Validity Type</td> <td><input type="text" id="validityType" name="validityType"></td>
-          <td>Validity</td> <td><input type="text" id="validity" name="validity"></td>
+          <td>Validity Type</td> <td><input type="text" id="validityType" class="input2 form-control" name="validityType"></td>
+          <td>Validity</td> <td><input type="text" id="validity" class="input2 form-control" name="validity"></td>
       </tr>
       
       <tr>
-          <td><label>Price Point ID</label></td> <td><select name="pricePoint" id="pricePoint">
-                                                    <option value="">None</option>
+          <td><label>Price Point ID</label></td> <td><select name="pricePoint" class="input2" id="pricePoint">
+                                    
                                                     <option value="FULL_TEST( INR 100 )">FULL_TEST( INR 100 )</option>
                                                     <option value="OP( INR 100 )">OP( INR 100 )</option>
                                                     <option value="T12( INR 20 )">T12( INR 20 )</option></select></td>
-         <td>Price</td> <td><input type="text" id="price" name="price"></td>                                           
+         <td>Price</td> <td><input type="text" id="price" class="input2 form-control" name="price"></td>                                           
       </tr>
       
       <tr>
-          <td>Auto Renewal Offer</td> <td><input type="radio" id="yesAuto" group="yesAuto"  name="yesAuto" value="yesAuto">
+          <td>Auto Renewal Offer</td> <td><input type="radio" id="yesAuto" group="yesAuto" class="input1"  name="yesAuto" value="yesAuto">
           <label for="yes">Yes</label>
-          <input type="radio" id="noAuto" group="yesAuto" name="yesAuto" value="noAuto">   
+          <input checked = "checked" type="radio" id="noAuto" group="yesAuto" name="yesAuto" value="noAuto" class="input1">   
           <label for="no">No</label></td>
 
-           <td>Send Notifications</td> <td><input type="radio" id="sendNotificationsYes" group="sendNotification"  name="sendNotification" value="sendNotificationsYes">
+           <td>Send Notifications</td> <td><input type="radio" id="sendNotificationsYes" group="sendNotification"  name="sendNotification" class="input1" value="sendNotificationsYes">
           <label for="yes">Yes</label>
-          <input type="radio" id="sendNotificationsNo" group="sendNotification"  name="sendNotification" value="sendNotificationsNo">   
+          <input checked = "checked" type="radio" id="sendNotificationsNo" group="sendNotification" class="input1" name="sendNotification" value="sendNotificationsNo">   
           <label for="no">No</label></td>
       </tr>
       
       <tr>
-          <td>Renew Offer As</td> <td><input type="radio" id="bundledRenew" group="bundledRenew" name="bundledRenew" value="bundledRenew">
+          <td>Renew Offer As</td> <td><input type="radio" class="input1" id="bundledRenew" group="bundledRenew" name="bundledRenew" value="bundledRenew">
           <label for="bundledRenew">Bundled</label>
-          <input type="radio" id="individualRenew" group="bundledRenew" name="bundledRenew" value="individualRenew">   
+          <input checked = "checked" type="radio" id="individualRenew" group="bundledRenew" class="input1" name="bundledRenew" value="individualRenew">   
           <label for="Individual">Individual</label></td>
           
-          <td><label>Next Renewal Offer</label></td> <td><select name="nextRenewalOffer" id="nextRenewalOffer">
+          <td><label>Next Renewal Offer</label></td> <td><select name="nextRenewalOffer" class="input2" id="nextRenewalOffer">
                                                     <option value="None">None</option>
           </td>
       </tr>
@@ -204,7 +226,9 @@
        <label style="color: white">Showing <label id="label1" name="label1">0</label> to <label id="label2" name="label2">0</label> of <label id="label3" name="label3">0</label> entries.</label></div><br>
 -->
        
-        <script type="module" src="js/OfferCreation.js"></script> 
+        <script type="module" src="js/phome.js"></script>
+        <script type="module" src="js/OfferCreation.js"></script>
+        <script type="module" src="js/validations.js"></script>
               
 </body>
 </html>
