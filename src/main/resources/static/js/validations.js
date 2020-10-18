@@ -5,13 +5,16 @@ export function inputValidations() {
   var pricePoint = document.getElementById("pricePoint").value;       //nahi
   var validity = document.getElementById("validity").value;           //nahi
   var lifecycle = document.getElementById("lifeCycleId").value;       //nahi
-  var price = document.getElementById("price").value;                 
- 
+  var price = document.getElementById("price").value;               
+  var desc = document.getElementById("offerDescription").value
+
   if(offerId == ""){
     return "Enter OFFER ID";
   }
 
-
+  if(desc == "")
+  return "Enter offer Description"
+  
   return null;
 }
 

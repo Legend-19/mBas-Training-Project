@@ -10,10 +10,10 @@ import javax.persistence.Table;
 public class Login {
 
 	@Id
-	@Column(name="username", length=20)
+	@Column(name="username")
 	private String username;
 	
-	@Column(name="password", length=8)
+	@Column(name="password")
 	private String password;
 
 	public String getUsername() {

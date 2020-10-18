@@ -19,5 +19,6 @@ public interface OfferService {
 	List<TDCnfPlanMaster> getPlan();
 	TDCnfOfferPlan linkOfferPlan(TDCnfOfferPlan tdCnfOfferPlan);
 	TDCnfOfferMaster getOfferById(String offerId);
+	public Login signUp(Login loginDetails);
 	
 }

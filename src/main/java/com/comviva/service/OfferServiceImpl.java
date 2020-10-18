@@ -1,5 +1,6 @@
 package com.comviva.service;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,7 @@ import com.comviva.repo.LoginRepo;
 import com.comviva.repo.OfferCreateRepo;
 import com.comviva.repo.OfferPlanLinkRepo;
 import com.comviva.repo.PlanCreateRepo;
+import com.comviva.utils.EncryptionSHA;
 
 @Repository
 public class OfferServiceImpl implements OfferService {
@@ -71,15 +73,21 @@ public class OfferServiceImpl implements OfferService {
 
 	@Override
 	public boolean ifUserExists(Login loginDetails) {
-//		System.out.println(loginDetails.getUsername());
 		Optional<Login> optionalLogin=loginRepo.findById(loginDetails.getUsername());
 		if(!(optionalLogin.isPresent()))
 			return false;
 		Login login=optionalLogin.get();
-		if(!(loginDetails.getPassword().equals(login.getPassword())))
-			return false;
+		try {
+			String encodedPassword=EncryptionSHA.toHexString(EncryptionSHA.getSHA(loginDetails.getPassword()));
+			if(!(login.getPassword().equals(encodedPassword)))
+					return false;
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
+  
+  
 
 	@Override
 	public List<TDCnfPlanMaster> getPlan() {
@@ -97,6 +105,21 @@ public class OfferServiceImpl implements OfferService {
 		Optional<TDCnfOfferMaster> optionalTdCnfOfferMaster=offerCreateRepo.findById(offerId);
 		TDCnfOfferMaster tdCnfOfferMaster=optionalTdCnfOfferMaster.get();
 		return tdCnfOfferMaster;
+	}
+	
+	@Override
+	public Login signUp(Login loginDetails) {
+		
+		try {
+			String encodedPassword=EncryptionSHA.toHexString(EncryptionSHA.getSHA(loginDetails.getPassword()));
+			loginDetails.setPassword(encodedPassword);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		loginRepo.save(loginDetails);
+		
+		return loginDetails;
 	}
 
 }

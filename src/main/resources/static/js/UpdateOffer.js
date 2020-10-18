@@ -186,7 +186,20 @@ $("#submitOffer").click(function(e){
         document.getElementById('offerExpiryDate').value = data.endDate;
         document.getElementById("lifeCycleId").value = data.lifeCycleId;
         document.getElementById("pricePoint").value = data.pricePoint;
+        document.getElementById("").value 
 
+        if(data.offerType == "bundled") {
+            document.getElementById("bundled").checked = true;
+            document.getElementById("bundled").click();
+        }
+        if(data.offerType == "individual") {
+            document.getElementById("individual").checked = true;
+            document.getElementById("individual").click();
+        }
+
+       document.getElementById("offertyperow").disabled = true; 
+       document.getElementById("lifeCycleId").click(); 
+       document.getElementById("pricePoint").click();
     }
 
 

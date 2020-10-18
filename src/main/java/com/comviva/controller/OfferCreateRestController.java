@@ -93,5 +93,9 @@ public class OfferCreateRestController {
 		return offerService.getOfferById(offerID);
 	}
 	
+	@PostMapping("/signup")
+	public Login signUp(@RequestBody Login loginDetails) {
+		return offerService.signUp(loginDetails);
+	}
 	
 }

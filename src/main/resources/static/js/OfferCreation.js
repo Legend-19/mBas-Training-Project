@@ -2,7 +2,9 @@ import { addOffer, deleteOffer, getOffers, offerPriceById, getPlans, addPlan } f
 
 import {inputValidations} from "./validations.js"
 var myTable;
-var rowCounter = 0;
+var mRow = 1;
+var mCol = 1;
+var count=1;
 
 function getCookieValue(a) {
   var b = document.cookie.match("(^|;)\\s*" + a + "\\s*=\\s*([^;]+)");
@@ -38,7 +40,7 @@ $('#offerExpiryDate').click(function () {
     if (document.getElementById("offerId").value == "")
       alert("Please fill the offer id first");
     else {
-      rowCounter++;
+      // rowCounter++;
       PopulateItemsTable();
       $(".dataTables_length").addClass("bs-select");
       getPlans().then(res=>showPlan(res))
@@ -146,6 +148,7 @@ $('#offerExpiryDate').click(function () {
     var validityType = document.getElementById("validityType").value;
     var pricePoint = document.getElementById("pricePoint").value;
     var price = document.getElementById("price").value;
+    document.getElementById("lifeCycleId").click();
 
     if (document.getElementById("yesAuto").checked) {
       autoRenewal = document.getElementById("yesAuto").value;
@@ -211,7 +214,9 @@ $('#offerExpiryDate').click(function () {
 
 function showPlan(data) {
     data.forEach((row) => {
-      $("#"+document.getElementById("offerId").value + rowCounter).append(
+      var id = (mRow-1).toString()+(3).toString()
+      console.log(id);
+      $("#"+ id).append(
         `<option value=${row.planId}>${row.planId}</option>`
       );
     });
@@ -227,40 +232,42 @@ function BindItemTable() {
     info: true,
     autoWidth: false,
     sDom: "lfrtip",
+    "order": [[ 0, "asc" ]]
   });
 }
 
 
 
 function PopulateItemsTable() {
-  //   $.ajax({
-  //     type: "GET",
-  //     url: "http://localhost:8080/api/getoffers",
-  //     contentType: "application/json; charset=utf-8",
-  //     dataType: "json",
-  //     success: function (response) {
-  //       console.log(response);
-  //       // var jsonObject = JSON.stringify(response);
   var response = [1];
   var result = response.map(function (item) {
     var result = [];
     result.push(
-      `<button onclick="deleteRow(this)"><i class="fa fa-trash pointer" aria-hidden="true"></i></button>`
+      // `<button onclick="deleteRow(this)"><i class="fa fa-trash pointer" aria-hidden="true"></i></button>`
+      `<p>${count}.</p>`
     );
-    result.push(document.getElementById("offerId").value);
-    result.push(`<select name="plans" id="${document.getElementById("offerId").value + rowCounter}">
+    count++;
+    mCol++;
+    result.push(`<p id="${mRow.toString()+mCol.toString()}"> ${document.getElementById("offerId").value} </p>`);
+    mCol++;
+    result.push(`<select name="plans" id="${mRow.toString()+mCol.toString()}">
       </select>`);
-    result.push(`<select name="order" id="order">
+      mCol++;
+    result.push(`<select name="order" id="${mRow.toString() + mCol.toString()}">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         </select>`);
+        mCol++;
     result.push(
-      `<button id="${rowCounter}" value="${item.offerId}" onclick="savePlan()"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>`
+      `<button id="${mRow.toString()+mCol.toString()}" value="${mRow+mCol}" onclick="savePlan(this)"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>`
     );
+    mCol=1;
+    mRow++;
     return result;
   });
   //       });
+  
   myTable.rows.add(result);
   myTable.draw();
   //     },
@@ -272,28 +279,35 @@ function PopulateItemsTable() {
   //   });
 }
 
-window.savePlan = () => {
-  var offerId = document.getElementById("offerId").value
-  var planId = document.getElementById(document.getElementById("offerId").value + rowCounter).value
-  var orderNo = document.getElementById("order").value
-  
+window.savePlan = (btn) => {
+   var id = getId(btn);
+   console.log(id);
+   var offerId = document.getElementById(id+"2").innerHTML
+   var planId = document.getElementById(id+"3").value
+  var orderNo = document.getElementById(id+"4").value
+  console.log(btn.id);
   var planOBJ = {
     offerId: offerId,
     planId: planId,
     orderNo: orderNo
   }
   addPlan(planOBJ).then(res=> {console.log("save plan button");
-  console.log(rowCounter.toString());
-  document.getElementById(rowCounter.toString()).disabled = true;
+  document.getElementById(id+"5").disabled = true;
   })
+  console.log(offerId + " " + planId + " " + orderNo);
 }
 
 window.deleteRow = (btn) => {
   // console.log("DELETE");
-  // var row = btn.parentNode.parentNode;
+ //var row = btn.parentNode.parentNode;
   // row.parentNode.removeChild(row);
-  // rowCounter--;
-  alert("DELETED")
+  //rowCounter--;
+  //var myTable = $('#dtBasicExample').DataTable();
+ // myTable.row( row ).hide();
+//  $("#"+btn.id).parents("tr").hide();
+// alert("BTN")
+//  myTable.row(this).remove();
+//   myTable.draw();
 } 
 
 function disableBundledElements() {
@@ -304,6 +318,12 @@ function disableBundledElements() {
   document.getElementById("lifeCycleId").disabled = true;
   document.getElementById("price").disabled = true;
   document.getElementById("nextRenewalOffer").disabled = true;
+}
+
+function  getId(element) {
+  var row = element.parentNode.parentNode.rowIndex;
+  var col = element.parentNode.cellIndex;
+  return row.toString();
 }
 }
 else {
