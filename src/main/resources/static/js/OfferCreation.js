@@ -20,6 +20,7 @@ tomorrow.setDate(new Date().getDate()+1);
   console.log(today);
 document.getElementsByName("offerStartDate")[0].setAttribute('min', today);
 
+disableBundledElements();
 // $('#offerStartDate').datetimepicker();
 
 $('#offerExpiryDate').click(function () {
@@ -77,13 +78,7 @@ $('#offerExpiryDate').click(function () {
   });
 
   $("#bundled").click(function (e) {
-    document.getElementById("cost").disabled = false;
-    document.getElementById("validityType").disabled = true;
-    document.getElementById("pricePoint").disabled = true;
-    document.getElementById("validity").disabled = true;
-    document.getElementById("lifeCycleId").disabled = true;
-    document.getElementById("price").disabled = true;
-    document.getElementById("nextRenewalOffer").disabled = true;
+    disableBundledElements();
   });
 
 
@@ -300,6 +295,16 @@ window.deleteRow = (btn) => {
   // rowCounter--;
   alert("DELETED")
 } 
+
+function disableBundledElements() {
+  document.getElementById("cost").disabled = false;
+  document.getElementById("validityType").disabled = true;
+  document.getElementById("pricePoint").disabled = true;
+  document.getElementById("validity").disabled = true;
+  document.getElementById("lifeCycleId").disabled = true;
+  document.getElementById("price").disabled = true;
+  document.getElementById("nextRenewalOffer").disabled = true;
+}
 }
 else {
   window.location.href = "http://localhost:8080/";

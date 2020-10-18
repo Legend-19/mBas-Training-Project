@@ -40,6 +40,7 @@ const baseURL = "http://localhost:8080/api"
                 success: function(data) { 
                     console.log(data);
                     alert("Offer Added");
+                    window.location.reload();
                 },
                 contentType: "application/json",
                 dataType: 'json'
