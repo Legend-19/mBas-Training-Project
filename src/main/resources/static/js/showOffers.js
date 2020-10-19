@@ -5,10 +5,6 @@ function getCookieValue(a) {
   return b ? b.pop() : "";
 }
 
-// response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
-// response.setHeader("Pragma","no-cache");
-// response.setDateHeader("Expires", 0);
-
 var myTable;
 
 if (getCookieValue("msession") == "true") {
@@ -42,13 +38,12 @@ function PopulateItemsTable() {
     dataType: "json",
     success: function (response) {
       console.log(response);
-      // var jsonObject = JSON.stringify(response);
+
       var result = response.map(function (item) {
         var result = [];
         result.push(
           `<button value="${item.offerId}" onclick="deleteRow(this)"><i class="fa fa-trash pointer" aria-hidden="true"></i></button>`
         );
-        // result.push(`<button onclick="deleteRow(this)" value="${item.offerId}">Click</button>`);
         result.push(
           `<button value="${item.offerId}" onclick="editRow(this)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>`
         );
